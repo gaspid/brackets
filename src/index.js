@@ -1,24 +1,16 @@
 module.exports = function check(str, bracketsConfig) {
-  // your solution
-}
+  const bracketPairs = bracketsConfig.map(function (val) {
+      return val.join("");
+  });
 
-exports.min = function min (array) {
-  if ((array === undefined) || (array.length === 0)){
-      return 0;
-  }
-return Math.min.apply(null, array);
-}
+  let reducedStr = str;
+  let prevStr;
+  do{
+      prevStr = reducedStr;
+      bracketPairs.forEach(function (val) {
+          reducedStr = reducedStr.replace(val,"");
+      });
+  } while (reducedStr.length < prevStr.length);
 
-exports.max = function max (array) {
-  if ((array === undefined) || (array.length === 0)){
-      return 0;
-  }
-  return Math.max.apply(null, array);;
-}
-
-exports.avg = function avg (array) {
-  if ((array === undefined) || (array.length === 0)){
-      return 0;
-  }
-  return array.reduce((accumulator, currentValue) => accumulator + currentValue)/array.length;
+  return reducedStr.length === 0;
 }
