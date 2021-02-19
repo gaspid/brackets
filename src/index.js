@@ -1,7 +1,4 @@
- History
- 1 contributor
-21 lines (21 sloc)  551 Bytes
-  
+
 module.exports = function check(str, bracketsConfig) {
    if (str.length % 2 === 1) return false;
   while (str.length > 0) {
